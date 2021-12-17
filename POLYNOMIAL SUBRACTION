@@ -82,7 +82,7 @@ void add_poly(struct node*head1,struct node*head2)
         {
                 while(temp2!=NULL)
                 {
-                        printf("%dX^%d+",temp2->coeff,temp2->expo);
+                        printf("(%dX^%d)+",-(temp2->coeff),temp2->expo);
                         temp2=temp2->next;
                 }
         }
