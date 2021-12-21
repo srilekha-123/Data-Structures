@@ -1,0 +1,163 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node* next;
+}*newnode,*temp;
+struct node *head=NULL;
+struct node *tail=NULL;
+void create()
+{
+    printf("creation of single linked list:\n");
+    int value;
+    char ch;
+    do{
+        newnode=(struct node*)malloc(sizeof(struct node));
+        printf("enter value:\n");
+        scanf("%d",&value);
+        newnode->data=value;
+        newnode->next=NULL;
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else
+        {
+            tail->next=newnode;
+            tail=newnode;
+            tail->next=head;
+        }
+        printf("enter c to continue:\n");
+        scanf(" %c",&ch);
+    }while(ch=='c');
+}
+void display()
+{
+    temp=head;
+    while(temp->next!=head)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+    printf("%d",temp->data);
+}
+void ins_beg()
+{
+    int value;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter the value:\n");
+    scanf("%d",&value);
+    newnode->data=value;
+    newnode->next=head;
+    tail->next=newnode;
+    head=newnode;
+}
+void ins_end()
+{
+    int value;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter value;\n");
+    scanf("%d",&value);
+    newnode->data=value;
+    tail->next=newnode;
+    newnode->next=head;
+    tail=newnode;
+}
+void ins_spe()
+{
+    int pos,value,i;
+    temp=head;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    printf("enter value:\n");
+    scanf("%d",&value);
+    printf("enter position:\n");
+    scanf("%d",&pos);
+    for(i=0;i<pos-1;i++)
+    {
+        temp=temp->next;
+    }
+    newnode->data=value;
+    newnode->next=temp->next;
+    temp->next=newnode;
+}
+void del_beg()
+{
+    temp=head;
+    head=head->next;
+    tail->next=head;
+}
+void del_end()
+{
+    temp=head;
+    while(temp->next!=tail)
+    {
+        temp=temp->next;
+    }
+    temp->next=head;
+    tail=temp;
+}
+void del_pos()
+{
+    temp=head;
+    int i,pos;
+    printf("enter positon :\n");
+    scanf("%d",&pos);
+    for(i=0;i<pos-1;i++)
+    {
+        temp=temp->next;
+    }
+    temp->next=temp->next->next;
+}
+void counts()
+{
+    temp=head;
+    int count=0;
+    while(temp->next!=head)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+        count++;
+    }
+    printf("%d",temp->data);
+    count=count+1;
+    printf("the toatal no of nodes:%d",count);
+}
+void main()
+{
+  int choice=0;
+  while(choice<10)
+  {
+      printf("enter the choice\n");
+      scanf("%d",&choice);
+      switch(choice)
+      {
+        case 1:create();
+               display();
+               break;
+        case 2:ins_beg();
+               display();
+               break;
+        case 3:ins_end();
+               display();
+                break;
+        case 4:ins_spe();
+               display();
+               break;
+        case 5:del_beg();
+               display();
+               break;
+        case 6:del_end();
+               display();
+               break;
+        case 7:del_pos();
+               display();
+               break;
+        case 8:counts();
+               break;
+        default:printf("not valid\n");
+                break;
+      }
+  }
+}
+
