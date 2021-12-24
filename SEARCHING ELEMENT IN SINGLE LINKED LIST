@@ -1,0 +1,62 @@
+struct node{
+int data;
+struct node* next;                                                                                  
+ }*newnode,*temp;                                                                      
+struct node* head = NULL;                                                                        
+struct node* tail = NULL;
+void create ()                                                                                    
+{                                                                                                        
+char ch;                                                                                          
+int value;                                                                                        
+do                                                                                              
+ {                                                                                                        
+newnode=(struct node*)malloc(sizeof(struct node));                                                
+printf("enter the value");                                                                      
+ scanf("%d",&value);                                                                              
+newnode->data=value;                                                                              
+newnode->next=NULL;                                                                              
+if(head==NULL)                                                                                  
+ {                                                                                                        
+head = newnode;                                                                                  
+tail = newnode;                                                                          
+ }      
+ else                                                                                            
+ {                                                                                                        
+tail->next=newnode;                                                                            
+  tail=newnode;                                                                            
+}                                                                                                
+ printf("C-continue,E-exit\n");                                                                    
+scanf(" %c",&ch);                                                                        
+ }                                                                                                
+while(ch == 'C');                                                                        
+}
+void search()
+{
+  temp=head;
+  int a;
+  printf("enter the element to search\n");
+  scanf("%d",&a);
+  int flag=0;
+  while(temp!=NULL)
+  {
+     if(temp->data==a)
+     {
+        flag=1;
+        break;
+     }
+     temp=temp->next;
+   }
+   if(flag==1)
+   {
+      printf("element found\n");
+   }
+   else
+   {
+      printf("element not found\n");
+   }
+}
+void main()
+{
+   create();
+   search();
+ }
