@@ -1,0 +1,62 @@
+struct node{
+ int data;
+ struct node *next;
+}*newnode,*temp1,*temp2,*temp;
+struct node *head=NULL;
+struct node *tail=NULL;
+void create()
+{
+    printf("creation of single linked list:\n");
+    int value;
+    char ch;
+    do{
+        newnode=(struct node*)malloc(sizeof(struct node));
+        printf("enter value:\n");
+        scanf("%d",&value);
+        newnode->data=value;
+        newnode->next=NULL;
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else
+        {
+            tail->next=newnode;
+            tail=newnode;
+        }
+        printf("enter c to continue:\n");
+        scanf(" %c",&ch);
+    }while(ch=='c');
+}
+void sort()
+{
+   int t;
+   for(temp1->head;temp->next!=NULL;temp1=temp1->next)
+   {
+      for(temp2=temp1->next;temp2!=NULL;temp2=temp2->next)
+      {
+         if(temp1->data>temp->data)
+         {
+             t=temp1->data;
+             temp1->data=temp2->data;
+             temp2->data=t;
+          }
+        }
+      }
+  }
+void display()
+{
+    temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+}
+void main()
+{
+    create();
+    sort();
+    display();
+ }
