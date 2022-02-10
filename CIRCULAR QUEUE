@@ -1,0 +1,67 @@
+#include<stdio.h>
+#define max 5
+int q[max];
+int rear=0;
+int front=0;
+int count=0;
+void enqueue()
+{
+  int data;
+  if(count==max)
+  {
+    printf("circular queue is full");
+  }else{
+    printf("enter data");
+    scanf("%d",&data);
+    q[rear]=data;
+    rear=(rear+1)%max;
+    count++;
+  }
+}
+void dequeue()
+{
+  if(count==0)
+  {
+    printf("queuq is empty");
+  }else{
+    printf("deleted element is %d\n",q[front]);
+    front=(front+1)%max;
+    count--;
+  }
+}
+void display()
+{
+  int i=front,a=1;
+  if(count==0)
+  {
+      printf("empty queue");
+  }else{
+    while(1)
+    {
+      printf("%d ",q[i]);
+      i=(i+1)%max;
+      if(a==count)
+      break;
+      a++;
+    }
+}
+}
+void main()
+{
+    int choice;
+    while(1)  
+    {
+        printf("\n Enter your choice \n");        
+        scanf("%d",&choice);  
+        switch(choice)
+        {
+            case 1:enqueue();
+                   break;
+            case 2:dequeue();
+                   break;
+            case 3:display();
+                   break;
+            default:printf("wrong choice");
+        }
+    }
+}
