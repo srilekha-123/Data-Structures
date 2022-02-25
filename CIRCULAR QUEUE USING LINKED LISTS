@@ -1,0 +1,81 @@
+#include<stdio.h>  
+#include<stdlib.h>
+struct node{                                                                                                                    
+    int data;                                                                                                                
+    struct node*next;                                                                                              
+}*newnode,*temp;                                                                                                        
+struct node*head=NULL;                                                                                                  
+struct node*tail=NULL;                                                                                                  
+void enqueue()                                        
+{                                                                
+    int val;                                                      
+    struct node*newnode=(struct node*)malloc(sizeof(struct node));                              
+    printf("enterthe value to enqueue:\n");                                                        
+    scanf("%d",&val);                                                                        
+    if(head==NULL)                                                                            
+    {                                                                                        
+        newnode->data=val;                                                                    
+        head=newnode;                                                                          
+        tail=newnode;                                                                          
+        tail->next=NULL;                                                                      
+    }else{                                                                                
+            newnode->data=val;                                                                
+            newnode->next=head;                                                                
+            tail->next=newnode;                                                              
+            tail=newnode;                                                                    
+        }                                                                                
+}
+void dequeue()                                                                                                          
+{  
+    temp=head;
+    int item;                                                          
+    if(head==NULL)                                                    
+    {                                                                  
+        printf("underfow\n");                                          
+    }else if(head==tail){
+        head=NULL;
+        tail==NULL;
+        printf("deleted item is:%d\n",item);
+    }
+    else{                                                                          
+        item=head->data;
+        head=head->next;                                                            
+        tail->next=head;  
+        printf("deleted item is:%d\n",item);
+    }                                                                              
+}                                                                              
+void display()                                                                  
+{                                                                              
+    temp=head;                                                                                                              
+    if(temp==NULL)                                                                                                    
+    {                                                      
+        printf("queue is empty");                          
+    }  
+    else{
+       do                            
+        {                                                  
+        printf("%d ",temp->data);                      
+        temp=temp->next;
+      }while(temp!=tail);
+    }
+    printf("%d ",temp->data);
+}
+void main()
+{
+    int choice;
+    while(1)
+    {
+        printf("enter choice:");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:enqueue();
+                   break;
+            case 2:dequeue();
+                    break;
+            case 3:display();
+                    break;
+            default:printf("wrong choice");
+        }
+    }
+}
