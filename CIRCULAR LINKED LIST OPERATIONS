@@ -8,7 +8,7 @@ struct node *head=NULL;
 struct node *tail=NULL;
 void create()
 {
-    printf("creation of single linked list:\n");
+    printf("creation of circular linked list:\n");
     int value;
     char ch;
     do{
